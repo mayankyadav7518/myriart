@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Avatar,
-  Box,
-} from "@mui/material";
+import {Card, CardContent, Typography, Grid, Avatar, Box} from "@mui/material";
 import pic from "../../images/pic.jpeg";
 import google from "../../images/google.jpg";
 import microsoft from "../../images/microsoft.png";
