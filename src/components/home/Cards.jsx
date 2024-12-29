@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -178,6 +179,12 @@ const Cards = () => {
     setOpenService(false);
   };
 
+  const navigate = useNavigate();
+
+  const handlePricing = () => {
+    navigate("/contact");
+  };
+
   const handleOpenPricing = (service) => {
     setCurrentPricing({
       title: service.title,
@@ -192,7 +199,7 @@ const Cards = () => {
   };
 
   return (
-    <Box sx={{ mt: 10, overflow: "hidden", position: "relative" }}>
+    <Box sx={{ mt: 10 }}>
       <Typography
         variant="h4"
         sx={{
@@ -204,157 +211,126 @@ const Cards = () => {
       >
         Our Services
       </Typography>
-      <Box
+      <Grid
+        container
+        spacing={3}
         sx={{
-          display: "flex",
-          animation: "slide 15s linear infinite",
-          "@keyframes slide": {
-            "0%": { transform: "translateX(100%)" },
-            "100%": { transform: "translateX(-100%)" },
-          },
-          "&:hover": {
-            animationPlayState: "paused",
-          },
+          width: "100%",
+          margin: "0 auto",
         }}
       >
-        <Grid container spacing={4} sx={{ flexWrap: "nowrap" }}>
-          {cardData.map((card, index) => (
-            <Grid item xs={12} md={4} key={index}>
+        {cardData.map((card, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <Box
+              sx={{
+                backgroundColor: "#D1E9F6",
+                padding: "20px",
+                borderRadius: "10px",
+                color: "#333",
+                textAlign: "center",
+                height: "90%",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                marginRight: "20px",
+              }}
+            >
+              <Box
+                component="img"
+                src={card.imageUrl}
+                alt={card.title}
+                sx={{
+                  width: "90px",
+                  height: "90px",
+                  borderRadius: "50%",
+                  margin: "0 auto 20px",
+                }}
+              />
+              <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>
+                {card.title}
+              </Typography>
+              <Typography variant="body1" sx={{ color: "#666", mb: 2 }}>
+                {card.description}
+              </Typography>
               <Box
                 sx={{
-                  backgroundColor: "#D1E9F6",
-                  padding: "20px",
-                  borderRadius: "10px",
-                  color: "#333",
-                  textAlign: "center",
-                  minWidth: "300px",
-                  height: "100%",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                  "&:hover img": {
-                    transform: "scale(1.1)",
-                  },
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "10px",
                 }}
               >
-                <Box
-                  component="img"
-                  src={card.imageUrl}
-                  alt={card.title}
+                <Button
+                  variant="contained"
                   sx={{
-                    width: "150px",
-                    height: "150px",
-                    borderRadius: "50%",
-                    margin: "0 auto 20px",
-                    transition: "transform 0.3s ease-in-out",
+                    backgroundColor: "#0072ff",
+                    "&:hover": { backgroundColor: "#0059b3" },
                   }}
-                />
-                <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>
-                  {card.title}
-                </Typography>
-                <Typography variant="body1" sx={{ color: "#666", mb: 4 }}>
-                  {card.description}
-                </Typography>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    gap: "10px",
-                    marginBottom: "10px",
-                  }}
+                  onClick={() => handleOpenService(card)}
                 >
-                  <Button
-                    variant="contained"
-                    sx={{
-                      backgroundColor: "#0072ff",
-                      "&:hover": { backgroundColor: "#0059b3" },
-                    }}
-                    onClick={() => handleOpenService(card)}
-                  >
-                    Learn More
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      color: "#0072ff",
-                      borderColor: "#0072ff",
-                      "&:hover": { borderColor: "#0059b3", color: "#0059b3" },
-                    }}
-                    onClick={() => handleOpenPricing(card)}
-                  >
-                    Pricing
-                  </Button>
-                </Box>
+                  Learn More
+                </Button>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "#0072ff",
+                    borderColor: "#0072ff",
+                    "&:hover": { borderColor: "#0059b3", color: "#0059b3" },
+                  }}
+                  onClick={() => handleOpenPricing(card)}
+                >
+                  Pricing
+                </Button>
               </Box>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
 
-      {/* Modal for Service Details */}
+      {/* Service Modal */}
       <Dialog
         open={openService}
         onClose={handleCloseService}
-        PaperProps={{
-          style: {
-            borderRadius: "20px",
-            overflow: "hidden",
-            minWidth: "400px",
-            maxWidth: "800px",
-          },
-        }}
-        sx={{ backdropFilter: "blur(5px)" }}
+        maxWidth="sm"
+        fullWidth
       >
-        <DialogTitle sx={{ backgroundColor: "#41B3A2", color: "#fff" }}>
-          {currentService.title}
-        </DialogTitle>
-        <DialogContent sx={{ backgroundColor: "#f0f4ff", padding: "30px" }}>
-          {currentService.details}
-        </DialogContent>
+        <DialogTitle>{currentService.title}</DialogTitle>
+        <DialogContent>{currentService.details}</DialogContent>
         <DialogActions>
-          <Button
-            onClick={handleCloseService}
-            sx={{ color: "#fff", backgroundColor: "#0072ff", mx: "auto" }}
-          >
-            Close
-          </Button>
+          <Button onClick={handleCloseService}>Close</Button>
         </DialogActions>
       </Dialog>
 
-      {/* Modal for Pricing Details */}
+      {/* Pricing Modal */}
+      {/* Pricing Modal */}
       <Dialog
         open={openPricing}
         onClose={handleClosePricing}
-        PaperProps={{
-          style: {
-            borderRadius: "20px",
-            overflow: "hidden",
-            minWidth: "400px",
-            maxWidth: "800px",
-          },
-        }}
-        sx={{ backdropFilter: "blur(5px)" }}
+        maxWidth="sm"
+        fullWidth
       >
-        <DialogTitle sx={{ backgroundColor: "#ff7043", color: "#fff" }}>
-          {currentPricing.title} Pricing
-        </DialogTitle>
-        <DialogContent sx={{ backgroundColor: "#ffe5e0", padding: "30px" }}>
-          <Typography variant="h6" sx={{ marginBottom: "10px" }}>
-            Price: {currentPricing.pricing}
-          </Typography>
+        <DialogTitle>{currentPricing.title} Pricing</DialogTitle>
+        <DialogContent>
+          <Typography variant="h6">Price: {currentPricing.pricing}</Typography>
           <ul>
             {currentPricing.features.map((feature, index) => (
               <li key={index}>
-                <Typography variant="body1">{feature}</Typography>
+                <Typography>{feature}</Typography>
               </li>
             ))}
           </ul>
+          {/* Request Pricing Button */}
+          <Button
+            variant="contained"
+            sx={{
+              mt: 3,
+              backgroundColor: "#0072ff",
+              "&:hover": { backgroundColor: "#0059b3" },
+            }}
+            onClick={handlePricing} // Call the handlePricing function
+          >
+            Request Quote
+          </Button>
         </DialogContent>
         <DialogActions>
-          <Button
-            onClick={handleClosePricing}
-            sx={{ color: "#fff", backgroundColor: "#ff7043", mx: "auto" }}
-          >
-            Close
-          </Button>
+          <Button onClick={handleClosePricing}>Close</Button>
         </DialogActions>
       </Dialog>
     </Box>

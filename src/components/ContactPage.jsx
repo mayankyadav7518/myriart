@@ -760,7 +760,7 @@ const ContactForm = () => {
           </ContactFormContainer>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        {/* <Grid item xs={12} md={6}>
           <Box
             sx={{
               textAlign: "center",
@@ -893,7 +893,7 @@ const ContactForm = () => {
           </Grid>
         </FlagGrid>
       </CountriesContainer>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Box>
   );

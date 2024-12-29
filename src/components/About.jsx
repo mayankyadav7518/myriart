@@ -1,157 +1,3 @@
-// import React from 'react';
-// import { Box, Typography, Button, Grid, Avatar } from '@mui/material';
-// import { keyframes } from '@emotion/react';
-// import pic from '../images/pic.jpeg';
-// // Animations for text fade-in
-// const fadeInUp = keyframes`
-//   from {
-//     opacity: 0;
-//     transform: translateY(20px);
-//   }
-//   to {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
-// `;
-
-// // Animation for image scale-up
-// const scaleIn = keyframes`
-//   from {
-//     transform: scale(0.9);
-//     opacity: 0;
-//   }
-//   to {
-//     transform: scale(1);
-//     opacity: 1;
-//   }
-// `;
-
-// const About = () => {
-//   return (
-//     <Box
-//       sx={{
-//         padding: '4rem 2rem',
-//         backgroundColor: '#f9fafc',
-//         textAlign: 'center',
-//         overflow: 'hidden',
-//         width: '100vw'
-//       }}
-//     >
-//       {/* Top section heading */}
-//       <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold', color: '#343a40', marginTop: '40px' }}>
-//         Welcome to Myriart Tech
-//       </Typography>
-
-//       <Typography
-//         variant="subtitle1"
-//         sx={{
-//           fontSize: '1.2rem',
-//           color: '#7F8C8D',
-//           maxWidth: '600px',
-//           margin: '1rem auto 3rem',
-//           animation: `${fadeInUp} 1.2s ease-in-out`,
-//         }}
-//       >
-//         We craft innovative digital solutions designed to help businesses grow, empower individuals, and transform industries.
-//       </Typography>
-
-//       {/* Team Image Section */}
-//       <Grid
-//         container
-//         spacing={4}
-//         justifyContent="center"
-//         sx={{
-//           maxWidth: '1200px',
-//           margin: 'auto',
-//           animation: `${fadeInUp} 1.5s ease-in-out`,
-//         }}
-//       >
-//         <Grid item xs={12} sm={6} md={4}>
-//           <Avatar
-//             src={pic}
-//             alt="Our Team"
-//             sx={{
-//                 width: '300px',
-//                 height: '350px',
-//               borderRadius: '15px',
-//               animation: `${scaleIn} 2s ease-in-out`,
-//             }}
-//           />
-//         </Grid>
-//         <Grid item xs={12} sm={6} md={4}>
-//           <Avatar
-//             src={pic}
-//             alt="Our Team"
-//             sx={{
-//               width: '300px',
-//               height: '350px',
-//               borderRadius: '15px',
-//               animation: `${scaleIn} 2s ease-in-out 0.5s`,
-//             }}
-//           />
-//         </Grid>
-//         <Grid item xs={12} sm={6} md={4}>
-//           <Avatar
-//             src={pic}
-//             alt="Our Team"
-//             sx={{
-//                 width: '300px',
-//                 height: '350px',
-//               borderRadius: '15px',
-//               animation: `${scaleIn} 2s ease-in-out 1s`,
-//             }}
-//           />
-//         </Grid>
-//       </Grid>
-
-//       {/* About Section Text */}
-//       <Typography
-//         variant="h4"
-//         sx={{
-//           fontWeight: 'bold',
-//           marginTop: '3rem',
-//           color: '#2C3E50',
-//           animation: `${fadeInUp} 1.8s ease-in-out`,
-//         }}
-//       >
-//         Our Story
-//       </Typography>
-
-//       <Typography
-//         variant="body1"
-//         sx={{
-//           fontSize: '1.1rem',
-//           color: '#7F8C8D',
-//           maxWidth: '800px',
-//           margin: '1rem auto',
-//           lineHeight: 1.8,
-//           animation: `${fadeInUp} 2s ease-in-out`,
-//         }}
-//       >
-//         Myriart Tech was founded with a mission to revolutionize the way businesses and people interact with technology. Our team is passionate about creating cutting-edge products and services that push boundaries, transform experiences, and empower users.
-//         From healthcare innovation to digital transformation, we’re committed to making the world a better, more connected place through the power of technology.
-//       </Typography>
-
-//       {/* CTA Button */}
-//       <Button
-//         variant="contained"
-//         sx={{
-//           marginTop: '3rem',
-//           padding: '10px 30px',
-//           backgroundColor: '#3498db',
-//           '&:hover': {
-//             backgroundColor: '#2980b9',
-//           },
-//           animation: `${fadeInUp} 2.2s ease-in-out`,
-//         }}
-//       >
-//         Discover More
-//       </Button>
-//     </Box>
-//   );
-// };
-
-// export default About;
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -218,19 +64,21 @@ const handleGetInTouchClick = () => {
 
   return (
     <Box
-      sx={{
-        padding: "4rem 2rem",
-        backgroundColor: "#fff",
-        textAlign: "center",
-        overflow: "hidden",
-        width: "100vw",
-      }}
+    sx={{
+      padding: "4rem 0",
+      backgroundColor: "#fff",
+      textAlign: "center",
+      alignContent: "center",
+      overflowX: "hidden", 
+      width: "100%", 
+      maxWidth: "100%", 
+    }}
     >
       {/* Top section heading */}
       <Typography
         variant="h4"
         gutterBottom
-        sx={{ fontWeight: "bold", color: "#343a40", marginTop: "40px" }}
+        sx={{ fontWeight: "bold", color: "#343a40", marginTop: "40px", fontSize: "32px" }}
       >
         Welcome to Myriart Tech
       </Typography>
@@ -239,52 +87,25 @@ const handleGetInTouchClick = () => {
         sx={{
           fontSize: "1.2rem",
           color: "#7F8C8D",
-          maxWidth: "600px",
-          margin: "1rem auto 3rem",
+          // maxWidth: "600px",
+          margin: "1rem 2rem",
           animation: `${fadeInUp} 1.2s ease-in-out`,
         }}
       >
         We craft innovative digital solutions designed to help businesses grow,
         empower individuals, and transform industries.
+        At Myriart Tech, our mission is to revolutionize industries through
+          innovative technology, building solutions that empower users, enhance
+          experiences, and transform businesses. 
       </Typography>
 
-      {/* Mission Statement */}
-      <Box sx={{ marginBottom: "3rem" }}>
-        <Typography
-          variant="h5"
-          sx={{
-            fontWeight: "bold",
-            color: "#2C3E50",
-            animation: `${fadeInUp} 1.5s ease-in-out`,
-          }}
-        >
-          Our Mission
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            fontSize: "1.1rem",
-            color: "#7F8C8D",
-            maxWidth: "800px",
-            margin: "1rem auto",
-            lineHeight: 1.8,
-            animation: `${fadeInUp} 1.8s ease-in-out`,
-          }}
-        >
-          At Myriart Tech, our mission is to revolutionize industries through
-          innovative technology, building solutions that empower users, enhance
-          experiences, and transform businesses. We are driven by our passion
-          for pushing boundaries and delivering world-class digital products.
-        </Typography>
-      </Box>
-
       {/* Team Image Section */}
-      <Grid
+      {/* <Grid
         container
         spacing={4}
         justifyContent="center"
         sx={{
-          maxWidth: "1200px",
+          maxWidth: "900px",
           margin: "auto",
           animation: `${fadeInUp} 1.5s ease-in-out`,
         }}
@@ -296,8 +117,8 @@ const handleGetInTouchClick = () => {
                 src={pic}
                 alt="Team Member"
                 sx={{
-                  width: "120px",
-                  height: "120px",
+                  width: "150px",
+                  height: "150px",
                   borderRadius: "15px",
                   margin: "auto",
                   animation: `${scaleIn} 2s ease-in-out`,
@@ -315,7 +136,7 @@ const handleGetInTouchClick = () => {
             </Card>
           </Grid>
         ))}
-      </Grid>
+      </Grid> */}
 
       {/* Core Values Section */}
       <Box sx={{ marginTop: "4rem", textAlign: "center" }}>
@@ -331,7 +152,7 @@ const handleGetInTouchClick = () => {
         </Typography>
         <Grid
           container
-          spacing={4}
+          // spacing={4}
           justifyContent="center"
           sx={{ maxWidth: "1000px", margin: "3rem auto" }}
         >
@@ -424,7 +245,7 @@ const handleGetInTouchClick = () => {
         </Typography>
         <Grid
           container
-          spacing={4}
+          // spacing={4}
           justifyContent="center"
           sx={{ maxWidth: "1000px", margin: "2rem auto" }}
         >
